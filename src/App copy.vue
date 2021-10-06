@@ -3,11 +3,8 @@
   <div id="app">
     <Form title="ひとりごと"
       v-on:result-event="appAction" />
-    <!-- <Tweet v-bind:tweet="t" /> -->
-    <!-- <Tweet v-bind:hairetu="[123,456,789]" /> -->
-    <Tweet>
-      <p>kk</p>
-    </Tweet>
+    <Tweet v-bind:tweet="t" />
+    <!-- <button class="btn btn-primary" v-on:click="doAction"> -->
   </div>
 </template>
 
@@ -25,17 +22,15 @@ export default {
   // tの定義、宣言をする
   data(){
     return{
-      // t:'',
-      // items:[{tweet:'t'}]
+      t:'',
     }
   },
-  methods: {
+    methods: {
     // message＝Formで入力された内容
     // Formで入力された内容をdata()のtweetにわたす
     appAction(message){
-      // console.log(message)
+      console.log(message)
       this.t = message
-      console.log(this.t)
     }
   }
 }
