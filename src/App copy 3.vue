@@ -13,8 +13,7 @@
     <Tweet 
       v-for="Tweet in AllTweet"
       v-bind:TweetObj="Tweet"
-      v-bind:key="Tweet.tweet_id"
-      v-bind:obj="AllTweet"  />
+      v-bind:key="Tweet.tweet_id" />
   </div>
 </template>
 
@@ -48,7 +47,7 @@ export default {
     methods: {
     // receiveTweet（配列）…Formで入力された内容がはいってる
       appAction(receiveTweet){
-        // console.log(receiveTweet)
+        console.log(receiveTweet)
         // 配列AllTweetに対して、連想配列receiveTweetを追加する
         this.AllTweet.push(receiveTweet);
     },

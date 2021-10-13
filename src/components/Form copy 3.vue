@@ -5,9 +5,9 @@
 
 
     <!-- ユーザー切り替えしたい！！！！！！！！！！！！！！ -->
-    <!-- <button>click</button>
+    <button>click</button>
       <div v-if="a">aさんのとき</div>
-      <div v-else>bさんのとき</div> -->
+      <div v-else>bさんのとき</div>
     
 
 
@@ -62,7 +62,7 @@ export default {
       const sendTweet = Object.assign({},this.TweetObj)
       this.$emit('result-event', sendTweet)
       // console.log({})
-      // console.log(sendTweet)
+      console.log(sendTweet)
     }
   }
 }
