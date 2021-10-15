@@ -1,8 +1,11 @@
 // コンポーネントで出力される内容を扱う
 <template>
   <div id="app">
-    <Form title="ホーム" v-on:result-event="appAction"
-    v-on:search-event="searchAction" />
+    <Form
+      title="ホーム"
+      v-on:result-event="appAction"
+      v-on:search-event="searchAction"
+    />
 
     <!-- v-for="変数 in 配列"…配列の値を順に取り出して変数にいれ、タグを出力(p136) -->
     <!-- v-bind:属性名="設定する値"(p118) -->
@@ -16,7 +19,7 @@
       v-bind:key="Tweet.tweet_id"
     />
 
-    <hr>
+    <hr />
     <p>検索結果を表示</p>
     <!-- <Filter 
     v-bind:obj="AllTweet" /> -->
@@ -84,10 +87,22 @@ export default {
     //   });
     //   console.log(filteredTweet);
     // },
-    
-    searchAction(searchUserName){
-      const filteredTweet = this.AllTweet.filter(function (e) {
-        return e.tweet_user.user_name === searchUserName;
+
+    searchAction(n) {
+      // 配列inputNameに、連想配列AllTweetからキーuser_nameに対する値だけを取得していれる
+      // map()メソッド…連想配列から特定keyのvalueを取得
+      let inputName = this.AllTweet.map((item) => item.tweet_user.user_name);
+      console.log(inputName);
+
+
+// 問題点：なんか値がはいらないとこがある
+      // const filteredTweet = this.AllTweet.filter(function (e) {
+      //   return e.tweet_user.user_name === n;
+      // });
+      // console.log(filteredTweet);
+
+      const filteredTweet = this.AllTweet.filter(function () {
+        return inputName === n;
       });
       console.log(filteredTweet);
     },
