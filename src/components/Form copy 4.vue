@@ -1,31 +1,30 @@
 <template>
   <div class="m-5">
     <h2>{{ title }}</h2>
+
+
+
+    <!-- ユーザー切り替えしたい！！！！！！！！！！！！！！ -->
+    <!-- <button>click</button>
+      <div v-if="a">aさんのとき</div>
+      <div v-else>bさんのとき</div> -->
+    
+
+
+
     <div>
       <!-- <input class="form-control m-5" type="text" v-model="input"> -->
       <textarea
         name="form"
         id=""
-        class="form-control"
+        class="formcontrol"
         cols="60"
         rows="5"
         placeholder="いまなにしとる？"
-        v-model="TweetObj.tweet_body"
-      >
+        v-model="TweetObj.tweet_body">
       </textarea>
       <br>
-      <button class="btn btn-info" 
-        v-on:click="doAction">ツイートする</button>
-      <br>
-      <br>
-      <p>ユーザー検索</p>
-      <input type="search" 
-        class="form-control"
-        placeholder="ユーザー名"
-        v-model="searchWord">
-      <br>
-      <button class="btn btn-info" 
-        v-on:click="doSearch">検索する</button>
+      <button class="btn btn-info" v-on:click="doAction">ツイートする</button>
     </div>
   </div>
 </template>
@@ -39,16 +38,15 @@ export default {
   },
   data(){
     return{
+      // input:'いまなにしてる？',
       TweetObj:{
         tweet_id:0,
         tweet_body:'',
         tweet_user:{
           user_id:'id',
-          user_name:'test'
+          user_name:'ユーザー名'
         }
-      },
-      
-      searchWord:"",
+      }
     }
   },
   methods:{
@@ -65,11 +63,6 @@ export default {
       this.$emit('result-event', sendTweet)
       // console.log({})
       // console.log(sendTweet)
-    },
-
-    doSearch(){
-      this.$emit('search-event',this.searchWord )
-      // console.log(this.searchWord)
     }
   }
 }

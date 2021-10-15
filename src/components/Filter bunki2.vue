@@ -1,5 +1,9 @@
 <template>
   <div class="m-5">
+    <!-- <button v-on:click="userFilter" class="btn btn-info">
+      testさんのツイートを表示
+    </button> -->
+
     <table class="table-primary">
       <tr>
         <th></th>
@@ -56,40 +60,46 @@
 
 <script>
 export default {
-  name: "Tweet",
+  name: "Filter",
   props: {
-    TweetObj: Object,
-    // obj : Object,
+    obj: Object,
   },
   data() {
     return {
-      count: 0,
+      // Array.of()メソッド…配列を作成
+      testTweet: {
+        tweet_id: "",
+        tweet_body: "",
+        tweet_user: {
+          user_id: "",
+          user_name: "",
+        },
+      },
     };
   },
-  methods: {
-    iineCount() {
-      this.count++;
-    },
-    // userFilter(){
-    //   // 配列userNameに、連想配列obj（中身：連想配列AllTweet）からキーuser_nameに対する値だけを取得していれる
-    //   // map()メソッド…連想配列から特定keyのvalueを取得
-    //   const userName = this.obj.map(item => item.tweet_user.user_name);
-    //   console.log(userName);
-    //   // IF ユーザー名が指定のものだったら
-    // },
-  },
+  // methods: {
+  //   userFilter() {
+  //     // 配列userNameに、連想配列obj（中身：連想配列AllTweet）からキーuser_nameに対する値だけを取得していれる
+  //     // map()メソッド…配列を元に同じ要素数の配列を作成するメソッド。連想配列から特定keyのvalueを取得できる。
+  //     // const userName = this.obj.map((item) => item.tweet_user.user_name);
+  //     // console.log(userName);
+
+  //     // こんなことがしたい
+  //     // ①ユーザー名を入力する
+  //     // ②変数を宣言←入力された値と一致するユーザー名をいれる
+  //     // ③"test"の部分に変数をいれる    
+
+  //     const testTweet = this.obj.filter(function (e) {
+  //       return e.tweet_user.user_name === "test";
+  //     });
+  //     console.log(testTweet);
+
+  //     // ここで分解するのではなく、ボタンをおしたらイベントが発火し、
+  //     // App。VUEにてフィルターをかけ、そこでつくったTESTさんだけのツイートが
+  //     // まとまった配列をFORMにかえしたらいいのでは
+
+  //   },
+  // },
 };
 </script>
 
-<style>
-td {
-  border: 1px solid black;
-  width: 460px;
-}
-.item{
-  margin: 0px 5px;
-}
-.container{
-  display: flex;
-}
-</style>

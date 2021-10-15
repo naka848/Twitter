@@ -1,5 +1,12 @@
 <template>
   <div class="m-5">
+    <!-- tweetの中身はTweetObjがはいってる -->
+    <!-- <p>{{ TweetObj.tweet_id }} </p> -->
+    <!-- ここにユーザー名をいれる -->
+    <!-- <table border="1"> -->
+    
+    <button v-on:click="userFilter">ユーザー切り替え</button>
+
     <table class="table-primary">
       <tr>
         <th></th>
@@ -59,7 +66,7 @@ export default {
   name: "Tweet",
   props: {
     TweetObj: Object,
-    // obj : Object,
+    obj : Object,
   },
   data() {
     return {
@@ -70,13 +77,13 @@ export default {
     iineCount() {
       this.count++;
     },
-    // userFilter(){
-    //   // 配列userNameに、連想配列obj（中身：連想配列AllTweet）からキーuser_nameに対する値だけを取得していれる
-    //   // map()メソッド…連想配列から特定keyのvalueを取得
-    //   const userName = this.obj.map(item => item.tweet_user.user_name);
-    //   console.log(userName);
-    //   // IF ユーザー名が指定のものだったら
-    // },
+    userFilter(){
+      // 配列userNameに、連想配列obj（中身：連想配列AllTweet）からキーuser_nameに対する値だけを取得していれる
+      // map()メソッド…連想配列から特定keyのvalueを取得
+      const userName = this.obj.map(item => item.tweet_user.user_name);
+      console.log(userName);
+      // IF ユーザー名が指定のものだったら
+    },
   },
 };
 </script>
