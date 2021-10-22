@@ -22,7 +22,7 @@
       <input type="search" 
         class="form-control"
         placeholder="ユーザー名"
-        v-model="searchWord">
+        v-model="searchName">
       <br>
       <button class="btn btn-info" 
         v-on:click="doSearch">検索する</button>
@@ -48,14 +48,14 @@ export default {
         }
       },
       
-      searchWord:"",
+      searchName:"",
     }
   },
   methods:{
     // ツイートするボタンがおされたら
     // ①tweet_idを１増やす
     // ②TweetObj（idと入力内容）をApp.vueに送り、result-eventが発火する
-    doAction(){
+    doAction(){ 
       this.TweetObj.tweet_id += 1
       // （参照ではない）値をわたすために、新しいオブジェクトを定義する
       // Object.assign(target,sources)
@@ -67,8 +67,9 @@ export default {
       // console.log(sendTweet)
     },
 
+    // 検索ボタンがクリックされたら、入力値を引数としてsearch-eventが発火する
     doSearch(){
-      this.$emit('search-event',this.searchWord )
+      this.$emit('search-event',this.searchName)
       // console.log(this.searchWord)
     }
   }

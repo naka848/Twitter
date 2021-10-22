@@ -88,11 +88,31 @@ export default {
     //   console.log(filteredTweet);
     // },
 
-    searchAction(n) {
+    searchAction(searchName) {
+      // if(this.AllTweet.tweet_user.user_name === n){
+
+      // }
+
+      // console.log(this.AllTweet.tweet_user.user_name === n)
+
+      let i = 0;
+      const list = [];
+      while(i<10){
+        if(this.AllTweet[i].tweet_user.user_name === searchName){
+        console.log(this.AllTweet[i]);
+        list.push(this.AllTweet[i]);
+        }
+        i++;
+      }
+
+      
+
+
+
       // 配列inputNameに、連想配列AllTweetからキーuser_nameに対する値だけを取得していれる
       // map()メソッド…連想配列から特定keyのvalueを取得
-      let inputName = this.AllTweet.map((item) => item.tweet_user.user_name);
-      console.log(inputName);
+      // let inputName = this.AllTweet.map((item) => item.tweet_user.user_name === n);
+      // console.log(inputName);
 
 
 // 問題点：なんか値がはいらないとこがある
@@ -101,10 +121,10 @@ export default {
       // });
       // console.log(filteredTweet);
 
-      const filteredTweet = this.AllTweet.filter(function () {
-        return inputName === n;
-      });
-      console.log(filteredTweet);
+      // const filteredTweet = this.AllTweet.filter(function () {
+      //   return inputName === n;
+      // });
+      // console.log(filteredTweet);
     },
   },
 };
