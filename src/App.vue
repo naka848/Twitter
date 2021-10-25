@@ -43,15 +43,14 @@ export default {
         },
       }),
       tweet_user:{
-        user_id: "11111",
-        user_name: "hatu",
+        user_id: "5b",
+        user_name: "nanashi",
       },
     };
   },
 
   methods: {
     selectUser(user) {
-      console.log(user);
       this.tweet_user = user;
     },
 
@@ -72,7 +71,6 @@ export default {
         i++;
       }
       this.AllTweet = filteredTweet;
-      console.log(this.AllTweet);
     },
   },
 };

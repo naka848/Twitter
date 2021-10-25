@@ -11,8 +11,9 @@
         {{ tweet_user.user_name }}
       </option>
     </select>
+    <br>
     <button class="btn btn-info" v-on:click="changeUser">
-      ユーザーの切り替え
+      変更する
     </button>
   </div>
 </template>
