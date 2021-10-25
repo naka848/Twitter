@@ -3,9 +3,9 @@
   <div id="app">
     <Form
       title="ホーム"
-      v-on:result-event="appAction"
-      v-on:search-event="searchAction"
-    />
+      v-on:result-event="appAction" />
+    <Search 
+      v-on:search-event="searchAction"/>
 
     <!-- v-for="変数 in 配列"…配列の値を順に取り出して変数にいれ、タグを出力(p136) -->
     <!-- v-bind:属性名="設定する値"(p118) -->
@@ -18,30 +18,27 @@
       v-bind:TweetObj="Tweet"
       v-bind:key="Tweet.tweet_id"
     />
-
-    <hr />
-    <p>検索結果を表示</p>
-    <!-- <Filter 
-    v-bind:obj="AllTweet" /> -->
-    <Filter
+    <!-- <Filter
       v-for="Tweet in filteredTweet"
       v-bind:TweetObj="Tweet"
       v-bind:key="Tweet.tweet_id"
-    />
+    /> -->
   </div>
 </template>
 
 <script>
 import Form from "./components/Form.vue";
 import Tweet from "./components/Tweet.vue";
-import Filter from "./components/Filter.vue";
+// import Filter from "./components/Filter.vue";
+import Search from './components/Search.vue';
 
 export default {
   name: "App",
   components: {
     Form,
     Tweet,
-    Filter,
+    // Filter,
+    Search,
   },
 
   // コンポーネントが読み込まれたときに動く部分
@@ -59,72 +56,36 @@ export default {
           // user_followers:'',
         },
       }),
-      // filteredTweet:{
-      //   tweet_id:'',
-      //   tweet_body:'',
-      //   tweet_user:{
-      //     user_id:'',
-      //     user_name:'',
-      //   }
-      // }
+      filteredTweet:{
+        tweet_id:'',
+        tweet_body:'',
+        tweet_user:{
+          user_id:'',
+          user_name:'',
+        }
+      }
     };
   },
 
   methods: {
     // receiveTweet（配列）…Formで入力された内容がはいってる
     appAction(receiveTweet) {
-      // console.log(receiveTweet)
       // 配列AllTweetに対して、連想配列receiveTweetを追加する
       this.AllTweet.push(receiveTweet);
     },
 
-    // ユーザー検索
-    // ①ここで検索されたユーザー名をうけとる
-    // ②ユーザー名と一致するツイートをまとめて配列にいれる
-    // searchAction(searchUserName){
-    //   const filteredTweet = this.AllTweet.filter(function (e) {
-    //     return e.tweet_user.user_name === searchUserName;
-    //   });
-    //   console.log(filteredTweet);
-    // },
-
+    // 検索したユーザーのツイートだけを入れる配列filteredTweetを作成
     searchAction(searchName) {
-      // if(this.AllTweet.tweet_user.user_name === n){
-
-      // }
-
-      // console.log(this.AllTweet.tweet_user.user_name === n)
-
       let i = 0;
-      const list = [];
-      while(i<10){
-        if(this.AllTweet[i].tweet_user.user_name === searchName){
-        console.log(this.AllTweet[i]);
-        list.push(this.AllTweet[i]);
+      const filteredTweet = [];
+      while (i < 10) {
+        if (this.AllTweet[i].tweet_user.user_name === searchName) {
+          // console.log(this.AllTweet[i]);
+          filteredTweet.push(this.AllTweet[i]);
         }
         i++;
+        console.log(filteredTweet);
       }
-
-      
-
-
-
-      // 配列inputNameに、連想配列AllTweetからキーuser_nameに対する値だけを取得していれる
-      // map()メソッド…連想配列から特定keyのvalueを取得
-      // let inputName = this.AllTweet.map((item) => item.tweet_user.user_name === n);
-      // console.log(inputName);
-
-
-// 問題点：なんか値がはいらないとこがある
-      // const filteredTweet = this.AllTweet.filter(function (e) {
-      //   return e.tweet_user.user_name === n;
-      // });
-      // console.log(filteredTweet);
-
-      // const filteredTweet = this.AllTweet.filter(function () {
-      //   return inputName === n;
-      // });
-      // console.log(filteredTweet);
     },
   },
 };

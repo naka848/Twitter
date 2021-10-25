@@ -24,6 +24,7 @@
           />
         </svg>
         {{ count }}
+        
         <!-- viewBox="x, y, width, height"
           x,yは左上からみたx座標とy座標の位置、そしてwidth,heightは描画エリアの幅(座標値)と高さ(座標値) -->
         <svg

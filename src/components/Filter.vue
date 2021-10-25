@@ -12,6 +12,7 @@
           {{ TweetObj.tweet_user.user_id }}
         </td>
       </tr>
+      
       <tr>
         <th></th>
         <td>

@@ -16,16 +16,6 @@
       <br>
       <button class="btn btn-info" 
         v-on:click="doAction">ツイートする</button>
-      <br>
-      <br>
-      <p>ユーザー検索</p>
-      <input type="search" 
-        class="form-control"
-        placeholder="ユーザー名"
-        v-model="searchName">
-      <br>
-      <button class="btn btn-info" 
-        v-on:click="doSearch">検索する</button>
     </div>
   </div>
 </template>
@@ -67,11 +57,6 @@ export default {
       // console.log(sendTweet)
     },
 
-    // 検索ボタンがクリックされたら、入力値を引数としてsearch-eventが発火する
-    doSearch(){
-      this.$emit('search-event',this.searchName)
-      // console.log(this.searchWord)
-    }
   }
 }
 </script>
