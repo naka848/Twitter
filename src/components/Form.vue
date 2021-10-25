@@ -2,7 +2,6 @@
   <div class="m-5">
     <h2>{{ title }}</h2>
     <div>
-      <!-- <input class="form-control m-5" type="text" v-model="input"> -->
       <textarea
         name="form"
         id=""
@@ -23,7 +22,6 @@
 <script>
 export default {
   name: 'Form',
-  // プロパティを設定するもの
   props: {
     title: String,
   },
@@ -48,13 +46,9 @@ export default {
     doAction(){ 
       this.TweetObj.tweet_id += 1
       // （参照ではない）値をわたすために、新しいオブジェクトを定義する
-      // Object.assign(target,sources)
-      // target…コピー先オブジェクト。コピー元のプロパティを適用するもので、変更後に返されます。
-      // sources…コピー元オブジェクト。適用したいプロパティを含むオブジェクトです。
+      // Object.assign(コピー先オブジェクト,コピー元オブジェクト)
       const sendTweet = Object.assign({},this.TweetObj)
       this.$emit('result-event', sendTweet)
-      // console.log({})
-      // console.log(sendTweet)
     },
 
   }

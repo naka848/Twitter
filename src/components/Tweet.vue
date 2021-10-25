@@ -50,7 +50,6 @@ export default {
   name: "Tweet",
   props: {
     TweetObj: Object,
-    // obj : Object,
   },
   data() {
     return {
