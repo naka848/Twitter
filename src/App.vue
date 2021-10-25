@@ -18,18 +18,12 @@
       v-bind:TweetObj="Tweet"
       v-bind:key="Tweet.tweet_id"
     />
-    <!-- <Filter
-      v-for="Tweet in filteredTweet"
-      v-bind:TweetObj="Tweet"
-      v-bind:key="Tweet.tweet_id"
-    /> -->
   </div>
 </template>
 
 <script>
 import Form from "./components/Form.vue";
 import Tweet from "./components/Tweet.vue";
-// import Filter from "./components/Filter.vue";
 import Search from './components/Search.vue';
 
 export default {
@@ -37,7 +31,6 @@ export default {
   components: {
     Form,
     Tweet,
-    // Filter,
     Search,
   },
 
