@@ -24,6 +24,7 @@ export default {
   name: 'Form',
   props: {
     title: String,
+    user:Object,
   },
   data(){
     return{
@@ -35,8 +36,6 @@ export default {
           user_name:'test'
         }
       },
-      
-      searchName:"",
     }
   },
   methods:{
@@ -45,6 +44,7 @@ export default {
     // ②TweetObj（idと入力内容）をApp.vueに送り、result-eventが発火する
     doAction(){ 
       this.TweetObj.tweet_id += 1
+      this.TweetObj.tweet_user = this.user;
       // （参照ではない）値をわたすために、新しいオブジェクトを定義する
       // Object.assign(コピー先オブジェクト,コピー元オブジェクト)
       const sendTweet = Object.assign({},this.TweetObj)

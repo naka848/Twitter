@@ -1,7 +1,8 @@
 // コンポーネントで出力される内容を扱う
 <template>
   <div id="app">
-    <Form title="ホーム" v-on:result-event="appAction" />
+    <SelectUser v-on:selectUser-event="selectUser" />
+    <Form title="Twitter" v-on:result-event="appAction" v-bind:user="tweet_user" />
     <Search v-on:search-event="searchAction" />
 
     <!-- ①変数Tweetに配列AllTweetの値を取り出していれる
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import SelectUser from "./components/SelectUser.vue";
 import Form from "./components/Form.vue";
 import Tweet from "./components/Tweet.vue";
 import Search from "./components/Search.vue";
@@ -23,6 +25,7 @@ import Search from "./components/Search.vue";
 export default {
   name: "App",
   components: {
+    SelectUser,
     Form,
     Tweet,
     Search,
@@ -39,10 +42,19 @@ export default {
           user_name: "first",
         },
       }),
+      tweet_user:{
+        user_id: "11111",
+        user_name: "hatu",
+      },
     };
   },
 
   methods: {
+    selectUser(user) {
+      console.log(user);
+      this.tweet_user = user;
+    },
+
     // receiveTweet（配列）…Formで入力された内容がはいってる
     appAction(receiveTweet) {
       // 配列AllTweetに対して、連想配列receiveTweetを追加する
