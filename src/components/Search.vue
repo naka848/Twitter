@@ -9,6 +9,7 @@
     />
     <br />
     <button class="btn btn-info" v-on:click="doSearch">検索する</button>
+
   </div>
 </template>
 
