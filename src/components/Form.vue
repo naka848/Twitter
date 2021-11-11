@@ -50,7 +50,7 @@ export default {
       const sendTweet = Object.assign({},this.TweetObj)
       this.$emit('result-event', sendTweet)
     },
-
+    
   }
 }
 </script>
