@@ -34,9 +34,9 @@ export default {
     };
   },
 
-  updated: function () {
-    console.log(this.data.TweetObj.tweet_user);
-  },
+  // updated: function () {
+  //   console.log(this.data.TweetObj.tweet_user);
+  // },
   methods: {
     changeUser() {
       this.$emit("selectUser-event", this.selectedUser);

@@ -28,7 +28,7 @@ export default {
     user: Object,
   },
 
-  setup() {
+  setup(props,context) {
     const data = reactive({
       TweetObj: {
         tweet_id: 0,
@@ -39,13 +39,25 @@ export default {
         },
       },
     });
-    console.log(data);
+    console.log(props.user);
 
     onUpdated(()=>{
-      console.log(data.TweetObj.tweet_user);
+      // console.log(data.TweetObj.tweet_user);
     })
+
+    const doAction = () => {
+      data.TweetObj.tweet_id += 1;
+
+      data.TweetObj.tweet_user = props.user;
+
+      const sendTweet = Object.assign({}, data.TweetObj);
+      context.emit("result-event", sendTweet);
+      console.log(sendTweet);
+    };
+
     return {
       data,
+      doAction,
     };
   },
 
@@ -62,14 +74,14 @@ export default {
   //   }
   // },
 
-  methods: {
-    doAction() {
-      this.data.TweetObj.tweet_id += 1;
-      this.data.TweetObj.tweet_user = this.data.user;
-      const sendTweet = Object.assign({}, this.data.TweetObj);
-      this.$emit("result-event", sendTweet);
-    },
-  },
+  // methods: {
+  //   doAction() {
+  //     this.data.TweetObj.tweet_id += 1;
+  //     this.data.TweetObj.tweet_user = this.data.user;
+  //     const sendTweet = Object.assign({}, this.data.TweetObj);
+  //     this.$emit("result-event", sendTweet);
+  //   },
+  // },
 
   // methods:{
   //   // ツイートするボタンがおされたら

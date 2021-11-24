@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       // Array.of()メソッド…配列を作成
+      // 初回表示用のダミーデータ
       AllTweet: Array.of({
         tweet_id: 0,
         tweet_body: "はじめてのツイート",
@@ -42,6 +43,8 @@ export default {
           user_name: "first",
         },
       }),
+
+      // 初回ロード時にForm.vueにpropsとして渡し、selectUser()で上書きするためのデータ
       tweet_user:{
         user_id: "5b",
         user_name: "nanashi",
@@ -52,6 +55,7 @@ export default {
   methods: {
     selectUser(user) {
       this.tweet_user = user;
+      // console.log(this.tweet_user);
     },
 
     // receiveTweet（配列）…Formで入力された内容がはいってる
