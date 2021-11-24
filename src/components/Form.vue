@@ -13,7 +13,15 @@
       >
       </textarea>
       <br />
-      <button class="btn btn-info" v-on:click="doAction">ツイートする</button>
+      <button class="btn btn-info m-2" v-on:click="doAction">
+        ツイートする
+      </button>
+      <button class="btn btn-info m-2" v-on:click="doReload">
+        画面を更新する
+      </button>
+      <button class="btn btn-info m-2" v-on:click="removeAlltweet">
+        全ツイートを削除する
+      </button>
     </div>
   </div>
 </template>
@@ -47,17 +55,26 @@ export default {
 
     const doAction = () => {
       data.TweetObj.tweet_id += 1;
-
       data.TweetObj.tweet_user = props.user;
-
       const sendTweet = Object.assign({}, data.TweetObj);
       context.emit("result-event", sendTweet);
       console.log(sendTweet);
-    };
+    }
+
+    const doReload = () => {
+      location.reload();
+    }
+
+    const removeAlltweet = () =>{
+      localStorage.clear();
+      location.reload();
+    }
 
     return {
       data,
       doAction,
+      doReload,
+      removeAlltweet,
     };
   },
 
