@@ -78,33 +78,33 @@ export default {
     },
 
     // 検索したユーザーのツイートだけを入れる配列filteredTweetを作成
-    searchAction(searchName) {
-      let i = 0;
-      const filteredTweet = [];
-      while (i < this.AllTweet.length) {
-        if (this.AllTweet[i].tweet_user.user_name === searchName) {
-          filteredTweet.push(this.AllTweet[i]);
-        }
-        // console.log(searchName);
-        // console.log(JSON.parse(localStorage.getItem(1)).tweet_user.user_name);
-        i++;
-      }
-      this.AllTweet = filteredTweet;
-    },
-
-    // ２回目の検索ができないので、できるようにしたい
-    // ローカルストレージから検索結果をひっぱってくるようにしようとしてエラー
     // searchAction(searchName) {
     //   let i = 0;
     //   const filteredTweet = [];
-    //   while (i < this.localStorage.length) {
-    //     if (JSON.parse(localStorage.getItem(i)).tweet_user.user_name) === searchName) {
-    //       filteredTweet.push(this.localStorage.getItem(i));
+    //   while (i < this.AllTweet.length) {
+    //     if (this.AllTweet[i].tweet_user.user_name === searchName) {
+    //       filteredTweet.push(this.AllTweet[i]);
     //     }
+    //     // console.log(searchName);
+    //     // console.log(JSON.parse(localStorage.getItem(1)).tweet_user.user_name);
     //     i++;
     //   }
     //   this.AllTweet = filteredTweet;
     // },
+
+    // ２回目の検索ができないので、できるようにしたい
+    // ローカルストレージから検索結果をひっぱってくるようにしようとしてエラー
+    searchAction(searchName) {
+      let i = 0;
+      const filteredTweet = [];
+      while (i < this.AllTweet.length) {
+        if ((JSON.parse(localStorage.getItem(i)).tweet_user.user_name) === searchName) {
+          filteredTweet.push(this.localStorage.getItem(i));
+        }
+        i++;
+      }
+      this.AllTweet = filteredTweet;
+    },
 
 
   },
