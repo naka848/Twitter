@@ -62,6 +62,19 @@ export default {
     appAction(receiveTweet) {
       // 配列AllTweetに対して、連想配列receiveTweetを追加する
       this.AllTweet.push(receiveTweet);
+      // localStorage.setItem(key, value); … keyとvalueをペアにしてデータを保存
+      localStorage.setItem(
+        JSON.stringify(receiveTweet.tweet_id),
+        JSON.stringify(receiveTweet)
+      );
+    },
+
+    created(){
+      for (let i = 1; i < localStorage.length; i++){
+        // JSON.parse() … 文字列を JSON として解析し、文字列によって記述されている JavaScript の値やオブジェクトを構築する
+        // localStorage.getItem(key); … keyに対応するvalueを取得
+        this.AllTweet.push(JSON.parse(localStorage.getItem(i)));
+      }
     },
 
     // 検索したユーザーのツイートだけを入れる配列filteredTweetを作成
@@ -72,10 +85,28 @@ export default {
         if (this.AllTweet[i].tweet_user.user_name === searchName) {
           filteredTweet.push(this.AllTweet[i]);
         }
+        // console.log(searchName);
+        // console.log(JSON.parse(localStorage.getItem(1)).tweet_user.user_name);
         i++;
       }
       this.AllTweet = filteredTweet;
     },
+
+    // ２回目の検索ができないので、できるようにしたい
+    // ローカルストレージから検索結果をひっぱってくるようにしようとしてエラー
+    // searchAction(searchName) {
+    //   let i = 0;
+    //   const filteredTweet = [];
+    //   while (i < this.localStorage.length) {
+    //     if (JSON.parse(localStorage.getItem(i)).tweet_user.user_name) === searchName) {
+    //       filteredTweet.push(this.localStorage.getItem(i));
+    //     }
+    //     i++;
+    //   }
+    //   this.AllTweet = filteredTweet;
+    // },
+
+
   },
 };
 </script>

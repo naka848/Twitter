@@ -47,7 +47,7 @@ export default {
         },
       },
     });
-    console.log(props.user);
+    // console.log(props.user);
 
     onUpdated(()=>{
       // console.log(data.TweetObj.tweet_user);
@@ -58,7 +58,7 @@ export default {
       data.TweetObj.tweet_user = props.user;
       const sendTweet = Object.assign({}, data.TweetObj);
       context.emit("result-event", sendTweet);
-      console.log(sendTweet);
+      // console.log(sendTweet);
     }
 
     const doReload = () => {
